@@ -179,9 +179,10 @@
             ctx.clearRect(point.x - w, point.y - h, 4 * w, 4 * h);
         },
         hover: function(x, y) {
-            var ctx = this.tree.ctx;
-            var pixel = ctx.getImageData(x, y, 1, 1);
-            return pixel.data[3] == 255
+            var p = this.cirle.point;
+            var dx = x - p.x;
+            var dy = y - (p.y - 15);   // the heart is drawn slightly above the point
+            return Math.sqrt(dx * dx + dy * dy) < 45;
         }
     }
 
